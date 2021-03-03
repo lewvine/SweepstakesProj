@@ -18,10 +18,10 @@ namespace Sweepstakes
         }
 
         //Member methods
-        public Sweepstakes CreateSweepstake(string name)
+        public void CreateSweepstake(string name)
         {
             Sweepstakes sweepstake = new Sweepstakes(name);
-            return sweepstake;
+            _manager.InsertSweepstakes(sweepstake);
         }
     }
 }

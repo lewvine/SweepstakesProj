@@ -8,18 +8,15 @@ namespace Sweepstakes
 {
     public class Contestant
     {
-        //Member variables
-        public string FirstName;
-        public string LastName;
-        public string EmailAddress;
-        public int RegistrationNumber;
+        //Member properties GET SET for all
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string EmailAddress { get; set; }
+        public int RegistrationNumber { get; set; }
 
         //Constructor
-        public Contestant(string first, string last, string email)
+        public Contestant()
         {
-            this.FirstName = first;
-            this.LastName = last;
-            this.EmailAddress = email;
-         }
+        }
     }
 }
