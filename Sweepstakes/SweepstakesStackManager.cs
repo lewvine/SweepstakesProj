@@ -12,9 +12,9 @@ namespace Sweepstakes
         private Stack<Sweepstakes> stack;
 
         //Constructor
-        public SweepstakesStackManager(Stack<Sweepstakes> stack)
+        public SweepstakesStackManager()
         {
-            this.stack = stack;
+            this.stack = new Stack<Sweepstakes>();
         }
         //Member methods
 
