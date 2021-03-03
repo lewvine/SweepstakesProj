@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sweepstakes
 {
-    class MarketingFirm
+    public class MarketingFirm
     {
         //Member variables
         private ISweepstakesManager _manager;
@@ -18,9 +18,10 @@ namespace Sweepstakes
         }
 
         //Member methods
-        public void CreateSweepstake(string name)
+        public Sweepstakes CreateSweepstake(string name)
         {
             Sweepstakes sweepstake = new Sweepstakes(name);
+            return sweepstake;
         }
     }
 }

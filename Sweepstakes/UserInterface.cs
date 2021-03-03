@@ -16,6 +16,13 @@ namespace Sweepstakes
                 "Type '1' for 'stack' or '2' for 'queue'");
             return Convert.ToInt32(Console.ReadLine());
         }
+
+        public static int AddContestants()
+        {
+            Console.WriteLine(  "ADD A CONTESTANT: FIRST NAME/nPlease enter the contestant' first name.  Hit 'ENTER' when done.")
+            Console.ReadLine();
+                return Convert.ToInt32(Console.ReadLine());
+        }
     }
 
 }
