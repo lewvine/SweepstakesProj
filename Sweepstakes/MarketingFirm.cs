@@ -12,7 +12,7 @@ namespace Sweepstakes
         private ISweepstakesManager _manager;
 
         //Constructor
-        public MarketingFirm(ISweepstakesManager manager)
+        public  MarketingFirm(ISweepstakesManager manager)
         {
             _manager = manager;
         }

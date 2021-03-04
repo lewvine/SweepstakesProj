@@ -8,8 +8,8 @@ namespace Sweepstakes
 {
     public class Simulation
     {
-        public void RunSimulation()
-        {
+        public void RunSimulation(ISweepstakesManager manager)
+        {            
             //MarketingFirm firm = CreateMarketingFirmWithManager();
            
             //Sweepstakes newCarSweepstake = firm.CreateSweepstake("Win a BRAND, NEW CAAAR!");
@@ -18,7 +18,9 @@ namespace Sweepstakes
             //newCarSweepstake.RegisterContestant(calWorthington);
             //newCarSweepstake.RegisterContestant(joeDirte);
         }
-        public Simulation() { }
+        public Simulation() 
+        {
+        }
 
         public void CreateMarketingFirmWithManager(ISweepstakesManager manager)
         {

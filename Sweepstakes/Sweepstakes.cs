@@ -86,10 +86,10 @@ namespace Sweepstakes
 
             using (var client = new SmtpClient())
             {
-                client.Connect("smtp.friends.com", 587, false);
+                client.Connect("smtp.gmail.com", 587, false);
 
                 // Note: only needed if the SMTP server requires authentication
-                client.Authenticate("joey", "password");
+                client.Authenticate("lew.vine@gmail.com", "MYPASSWORD");
 
                 client.Send(message);
                 client.Disconnect(true);
@@ -109,10 +109,9 @@ namespace Sweepstakes
 
             using (var client = new SmtpClient())
             {
-                client.Connect("smtp.friends.com", 587, false);
+                client.Connect("smtp.EMAILSERVER.com", 587, false);
 
-                // Note: only needed if the SMTP server requires authentication
-                client.Authenticate("joey", "password");
+                client.Authenticate("MY E-MAIL", "MYPASSWORD");
 
                 client.Send(message);
                 client.Disconnect(true);
