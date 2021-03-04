@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MailKit.Net.Smtp;
+using MailKit;
+using MimeKit;
 
 namespace Sweepstakes
 {
@@ -61,14 +64,58 @@ namespace Sweepstakes
             {
                 if(contestant.Value == winner)
                 {
-                    Console.WriteLine($"Congratulations, {winner.FirstName} for winning the {this.name} Sweepstakes!");
+                    WinnerMessage(contestant.Value);
                 }
                 else
                 {
-                    Contestant loser = contestant.Value;
-                    Console.WriteLine($"Hey {loser.FirstName} {loser.LastName}!  We've selected a " +
-                        $"winner for {this.name}: {winner.FirstName}.  ");
+                    LoserMessage(contestant.Value);
                 }
+            }
+        }
+
+        public void WinnerMessage(Contestant contestant)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Lew Vine", "lew.vine@gmail.com"));
+            message.To.Add(new MailboxAddress($"{contestant.FirstName} {contestant.LastName}", $"{contestant.EmailAddress}"));
+            message.Subject = $"You've won the {this.name} sweepstakes!";
+            message.Body = new TextPart("plain")
+            {
+                Text = $"Congratulations, {winner.FirstName} for winning the {this.name} Sweepstakes!"
+            };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.friends.com", 587, false);
+
+                // Note: only needed if the SMTP server requires authentication
+                client.Authenticate("joey", "password");
+
+                client.Send(message);
+                client.Disconnect(true);
+            }
+        }
+
+        public void LoserMessage(Contestant contestant)
+        {
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Lew Vine", "lew.vine@gmail.com"));
+            message.To.Add(new MailboxAddress($"{contestant.FirstName} {contestant.LastName}", $"{contestant.EmailAddress}"));
+            message.Subject = $"You've lost the {this.name} sweepstakes!";
+            message.Body = new TextPart("plain")
+            {
+                Text = $"Sorry, {contestant.FirstName} won the {this.name} Sweepstakes.  Better luck next time!"
+            };
+
+            using (var client = new SmtpClient())
+            {
+                client.Connect("smtp.friends.com", 587, false);
+
+                // Note: only needed if the SMTP server requires authentication
+                client.Authenticate("joey", "password");
+
+                client.Send(message);
+                client.Disconnect(true);
             }
         }
 
