@@ -8,7 +8,7 @@ namespace Sweepstakes
 {
     public class Contestant
     {
-        //Member properties GET SET for all
+        //Member properties
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
@@ -17,6 +17,13 @@ namespace Sweepstakes
         //Constructor
         public Contestant()
         {
+        }
+
+        //Member methods
+
+        public void Update(Sweepstakes mySweepstakes)
+        {
+
         }
     }
 }

@@ -11,7 +11,13 @@ namespace Sweepstakes
         //Member variables
         private Dictionary<int, Contestant> contestants;
         private string name;
+        private Contestant winner;
         public string Name { get { return name; } }
+        public Contestant Winner
+        {
+            get { return winner; }
+            set { winner = value; NotifyConstestants(); }
+        }
 
         //Constructor
         public Sweepstakes(string name)
@@ -41,11 +47,29 @@ namespace Sweepstakes
             {
                 if(contestant.Key == winningNumber)
                 {
-                    return contestant.Value;
+                    winner = contestant.Value;
                 }
             }
-            //Whats the right way here?
-            return null;
+            //Alert all the other contestants a winner has been selected
+            NotifyConstestants();
+            return winner;
+        }
+
+        public void NotifyConstestants()
+        {
+            foreach (KeyValuePair<int, Contestant> contestant in contestants)
+            {
+                if(contestant.Value == winner)
+                {
+                    Console.WriteLine($"Congratulations, {winner.FirstName} for winning the {this.name} Sweepstakes!");
+                }
+                else
+                {
+                    Contestant loser = contestant.Value;
+                    Console.WriteLine($"Hey {loser.FirstName} {loser.LastName}!  We've selected a " +
+                        $"winner for {this.name}: {winner.FirstName}.  ");
+                }
+            }
         }
 
         public void PrintContestantInfo(Contestant contestant)
