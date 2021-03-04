@@ -8,15 +8,6 @@ namespace Sweepstakes
 {
     public static class UserInterface
     {
-        //Methods
-        //public static int ChooseSweepstakesManagerType()
-        //{
-        //    Console.WriteLine("Welcome to Sweepstakes Manager!  Would you like to utlize " +
-        //        "a 'stack' or a 'queue' to keep track of your sweepstakes?  " +
-        //        "Type '1' for 'stack' or '2' for 'queue'");
-        //    return Convert.ToInt32(Console.ReadLine());
-        //}
-
         public static string GetUserInputFor(string prompt)
         {
             Console.WriteLine(prompt);

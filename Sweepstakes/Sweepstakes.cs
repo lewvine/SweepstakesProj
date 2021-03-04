@@ -73,6 +73,7 @@ namespace Sweepstakes
             }
         }
 
+        //Confirmed these function as written below in a shell program with hard-coded values.
         public void WinnerMessage(Contestant contestant)
         {
             var message = new MimeMessage();
