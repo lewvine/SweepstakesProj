@@ -22,6 +22,13 @@ namespace Sweepstakes
             Console.WriteLine(prompt);
             return Console.ReadLine();
         }
+
+        public static void ShowContestantInfo(Contestant contestant)
+        {
+            Console.WriteLine(  $"Contestant #{contestant.RegistrationNumber}: " +
+                                $"/rName: {contestant.FirstName} {contestant.LastName}" +
+                                $"/rE-Mail: {contestant.EmailAddress}");
+        }
     }
 
 }

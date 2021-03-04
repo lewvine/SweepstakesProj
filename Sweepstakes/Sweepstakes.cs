@@ -25,8 +25,12 @@ namespace Sweepstakes
         {
             //This setup does limit the contestant to one sweepstakes at a time.
             contestant.RegistrationNumber = contestants.Count;
+
+            contestant.FirstName = UserInterface.GetUserInputFor("What is your first name?");
+            contestant.LastName = UserInterface.GetUserInputFor("What is your last name?");
+            contestant.EmailAddress = UserInterface.GetUserInputFor("What is your email?");
+            PrintContestantInfo(contestant);
             contestants.Add(contestant.RegistrationNumber, contestant);
-            string conste
         }
 
         public Contestant PickWinner()
@@ -40,15 +44,13 @@ namespace Sweepstakes
                     return contestant.Value;
                 }
             }
+            //Whats the right way here?
             return null;
         }
 
         public void PrintContestantInfo(Contestant contestant)
         {
-            Console.WriteLine($"Contestant #{contestant.RegistrationNumber}: " +
-                $"/rName: {contestant.FirstName} {contestant.LastName}" +
-                $"/rE-Mail: {contestant.EmailAddress}");
-            Console.ReadLine();
+            UserInterface.ShowContestantInfo(contestant);
         }
     }
 }
